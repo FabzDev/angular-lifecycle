@@ -15,11 +15,10 @@ export class FullScreenPageComponent implements OnInit, AfterViewInit, OnDestroy
   constructor(){};
 
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
 
   ngAfterViewInit(): void {
-    const initialState = { lng: 139.753, lat: 35.6844, zoom: 14 };
+    const initialState = { lng: -75.46171, lat: 10.39161, zoom: 14 };
 
     this.map = new Map({
       container: this.mapContainer.nativeElement,
@@ -27,8 +26,6 @@ export class FullScreenPageComponent implements OnInit, AfterViewInit, OnDestroy
       center: [initialState.lng, initialState.lat],
       zoom: initialState.zoom
     });
-
-
   }
 
   ngOnDestroy(): void {
