@@ -1,6 +1,6 @@
 app-sidebar {
   position: fixed;
-  top: 15px;
+  top: 30px;
   left: 20px;
   width: 180px;
   z-index: 999;
