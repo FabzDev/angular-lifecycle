@@ -4,14 +4,22 @@
 <div class="zoom-container p-2">
 
   <div class="zoom-component">
-    <button class="btn btn-primary">-</button>
-    <input type="range" class="form-range px-2" min="-2" max="18">
-    <button class="btn btn-primary">+</button>
+    <button (click)="zoomOut()" class="btn btn-primary">-</button>
+
+    <input  (input)="changeZoomWithBar( zoombar.value )"
+            [value]="currentZoom"
+            type="range"
+            class="form-range px-2"
+            min="1"
+            max="21"
+            #zoombar>
+
+    <button (click)="zoomIn()" class="btn btn-primary">+</button>
   </div>
 
   <div>
     <span class="form-label">
-      Zoom: 10,123
+      Zoom: {{ currentZoom | number:'2.2-2' }}
       <br>
       Lng, Lat: algo
     </span>

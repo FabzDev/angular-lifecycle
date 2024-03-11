@@ -18,7 +18,7 @@ export class FullScreenPageComponent implements OnInit, AfterViewInit, OnDestroy
   }
 
   ngAfterViewInit(): void {
-    const initialState = { lng: -75.46171, lat: 10.39161, zoom: 14 };
+    const initialState = { lng: -75.46171, lat: 10.39161, zoom: 8 };
 
     this.map = new Map({
       container: this.mapContainer.nativeElement,
