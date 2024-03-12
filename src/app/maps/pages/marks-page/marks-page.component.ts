@@ -37,11 +37,12 @@ export class MarksPageComponent {
 
     addMarker(): Marker{
       const markerElementHtml = document.createElement('div');
-      markerElementHtml.innerHTML = 'Apto <br> disponible';
+      // markerElementHtml.innerHTML = 'Apto <br> disponible';
 
       return new Marker({
-        color: 'red',
-        element: markerElementHtml,
+        color: '#xxxxxx'.replace(/x/g, y=>(Math.random()*16|0).toString(16)),
+        // element: markerElementHtml,
+        draggable: true,
       })
       .setLngLat(this.map!.getCenter())
       .addTo(this.map!)

@@ -23,3 +23,9 @@
   right: 20px;
   bottom: 50px;
 }
+
+.markers-container{
+  position: fixed;
+  right: 20px;
+  top: 50px;
+}
