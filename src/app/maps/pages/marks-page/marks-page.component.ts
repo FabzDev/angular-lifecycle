@@ -1,13 +1,19 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { LngLat, Map, Marker } from 'maplibre-gl'
 
+interface MarkerAndColor {
+  color: string,
+  marker: Marker
+}
+
 @Component({
   selector: 'maps-page-marks',
   templateUrl: './marks-page.component.html',
   styleUrl: 'marks-page.component.css',
 })
 export class MarksPageComponent {
-  map?: Map;
+  public map?: Map;
+  public markers: MarkerAndColor[] = [];
 
   @ViewChild('map')
   private mapContainer!: ElementRef<HTMLElement>;
@@ -35,16 +41,33 @@ export class MarksPageComponent {
 
     }
 
-    addMarker(): Marker{
-      const markerElementHtml = document.createElement('div');
+    addMarker(): void {
+      // const markerElementHtml = document.createElement('div');
       // markerElementHtml.innerHTML = 'Apto <br> disponible';
-
-      return new Marker({
-        color: '#xxxxxx'.replace(/x/g, y=>(Math.random()*16|0).toString(16)),
+      const color = '#xxxxxx'.replace(/x/g, y=>(Math.random()*16|0).toString(16))
+      const marker = new Marker({
         // element: markerElementHtml,
+        color: color,
         draggable: true,
       })
       .setLngLat(this.map!.getCenter())
       .addTo(this.map!)
+
+      this.markers.push({ color: color, marker: marker });
+
+    }
+
+    deleteMarker(index: number){
+      this.markers[index].marker.remove();
+      this.markers.splice(index, 1);
+    }
+
+    moveToMarker(mark: Marker){
+      if (!this.map) return;
+      this.map.flyTo({
+        zoom: 18,
+        center: mark.getLngLat(),
+
+      })
     }
   }

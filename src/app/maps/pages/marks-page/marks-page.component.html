@@ -9,9 +9,10 @@
         >+ Agregar marcador</button>
 
 <ul class="markers-container list-group">
-  <li class="list-group-item">Marker 1</li>
-  <li class="list-group-item">Marker 2</li>
-  <li class="list-group-item">Marker 3</li>
-  <li class="list-group-item">Marker 4</li>
-  <li class="list-group-item">Marker 5</li>
+  <li class="list-group-item"
+      *ngFor="let mark of markers; let i = index"
+      [ngStyle]="{color: mark.color}"
+      (dblclick)="deleteMarker(i)"
+      (click)="moveToMarker(mark.marker)"
+  ><strong>Marker {{i+1}}</strong></li>
 </ul>
