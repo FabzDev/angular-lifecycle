@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy } fr
 import { Map } from 'maplibre-gl';
 
 @Component({
+  selector: 'maps-fullscreen-page',
   templateUrl: './full-screen-page.component.html',
   styleUrl: 'full-screen-page.component.css'
 })
