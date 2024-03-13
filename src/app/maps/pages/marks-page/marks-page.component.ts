@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { Map, Marker } from 'maplibre-gl';
 
 
@@ -18,7 +18,7 @@ interface CoordinateAndColor {
   templateUrl: './marks-page.component.html',
   styleUrl: 'marks-page.component.css',
 })
-export class MarksPageComponent {
+export class MarksPageComponent implements AfterViewInit, OnDestroy{
   public map?: Map;
   public markersAndColors: MarkerAndColor[] = [];
   public coordinatesAndColors: CoordinateAndColor[] = [];
@@ -27,8 +27,13 @@ export class MarksPageComponent {
 
   constructor() {}
 
+
   ngOnInit(): void {
     this.readCoordsFromLS();
+  }
+
+  ngOnDestroy(): void {
+    this.map?.remove();
   }
 
   ngAfterViewInit(): void {
